@@ -68,25 +68,35 @@ class Information extends CI_Controller {
 			$this->load->view('information/change_info',$data);
 			$this->load->view('templates/footer');
 		} else {
-			$change_data = array('name' => htmlspecialchars($this->input->post('name')),
-				'email' => htmlspecialchars($this->input->post('email')),
-				'phone' => htmlspecialchars($this->input->post('phone'))
-				);
-			$this->users_model->update($user_id,$change_data);
-			$this->session->set_flashdata('message', 'You changed information.');
-			redirect(base_url()."information",'');
+			if ($this->session->userdata('is_teacher')==1||$this->session->userdata('user_id')==$user_id) 
+			{
+				$change_data = array('name' => htmlspecialchars($this->input->post('name')),
+					'email' => htmlspecialchars($this->input->post('email')),
+					'phone' => htmlspecialchars($this->input->post('phone'))
+					);
+				$this->users_model->update($user_id,$change_data);
+				$this->session->set_flashdata('message', 'You changed information.');
+				redirect(base_url()."information",'');
+			}
 		}
 	}
 	public function view_message()
 	{
 		$sender_id=$this->input->post('sender_id');
 		$receiver_id=$this->input->post('receiver_id');
-		$data['message_info']=$this->message_model->view_sent_message($sender_id,$receiver_id);
-		$data['sender_info']=$this->users_model->view_info($sender_id);
-		$data['receiver_info']=$this->users_model->view_info($receiver_id	);
-		$this->load->view('templates/header');
-		$this->load->view('information/send_message',$data);
-		$this->load->view('templates/footer');
+		if ($this->session->userdata('user_id')==$sender_id && $sender_id!=$receiver_id) 
+		{
+			$data['message_info']=$this->message_model->view_sent_message($sender_id,$receiver_id);
+			$data['sender_info']=$this->users_model->view_info($sender_id);
+			$data['receiver_info']=$this->users_model->view_info($receiver_id	);
+			$this->load->view('templates/header');
+			$this->load->view('information/send_message',$data);
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			redirect('information');
+		}
 	}
 	public function send_message()
 	{
