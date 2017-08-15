@@ -28,7 +28,7 @@ class Users extends CI_Controller {
 				$username=htmlspecialchars($this->input->post('username'));
 				$password=md5($this->input->post('password'));
 				$user_data=$this->users_model->login($username,$password);
-				var_dump($user_data);
+				//var_dump($user_data);
 				if ($user_data!=FALSE) {
 					$user_data=(array)$user_data;
 					$user_data["loggedin"] = true;
@@ -53,7 +53,7 @@ class Users extends CI_Controller {
 
 		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]',array('is_unique'=>'Username already exist'));
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]',array('is_unique'=>'Email already exist'));
-		$this->form_validation->set_rules('sdt', 'SĐT', 'numeric');
+		$this->form_validation->set_rules('phone', 'SĐT', 'numeric');
 		$this->form_validation->set_rules('password', 'Password','required');
 		$this->form_validation->set_rules('password2', 'Password Confirm', 'matches[password]');
 		$this->form_validation->set_rules('name', 'Name', 'required');
@@ -68,7 +68,7 @@ class Users extends CI_Controller {
 				'email' => htmlspecialchars($this->input->post('email')),
 				'username' => htmlspecialchars($this->input->post('username')),
 				'password' => md5($this->input->post('password')),
-				'sdt' => htmlspecialchars($this->input->post('sdt'))
+				'phone' => htmlspecialchars($this->input->post('phone'))
 				);
 			$this->users_model->register($data);
 			$this->session->set_flashdata('message', 'You are registered. You can login');

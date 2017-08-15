@@ -14,8 +14,8 @@
 			<input type="text" class="form-control" name="email" placeholder="Email" required="" autofocus="">
 		</div>
 		<div class="form-group">
-			<label>SĐT</label>
-			<input type="text" class="form-control" name="sdt" placeholder="SĐT" required="">
+			<label>Phone</label>
+			<input type="text" class="form-control" name="phone" placeholder="Phone" required="">
 		</div>
 
 		<div class="form-group">
