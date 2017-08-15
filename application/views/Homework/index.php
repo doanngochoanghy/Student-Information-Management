@@ -20,8 +20,9 @@
       <td><?php echo $homework['time']; ?></td>
       <td>
       <!-- <?php echo form_open('information/view_info', 'homework_id',array('homework_id'=>$homework['user_id'])); ?> -->
-      <button type="submit" class="btn btn-info">Download</button>
+      <!-- <button type="submit" class="btn btn-info">Download</button> -->
       <!-- <?php echo form_close(); ?> -->
+      <a class="btn btn-info" href="<?php echo base_url()."homework/download/".$homework['homework_id'] ?>">Download</a>
       </td>
     </tr>
   <?php endforeach; ?>

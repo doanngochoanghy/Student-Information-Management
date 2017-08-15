@@ -11,7 +11,11 @@ class Homeworks_model extends CI_Model {
 	{
 		return $this->db->get('homeworks')->result_array();
 	}
-
+	public function get_homework($id)
+	{
+		$this->db->where('homework_id', $id);
+		return $this->db->get('homeworks')->row_array();
+	}
 }
 
 /* End of file Homeworks_model */
