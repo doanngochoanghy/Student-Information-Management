@@ -1,7 +1,7 @@
 <div class="row">
   <h1 class="col-md-2 "><?php echo "Bài tập"; ?></h1>
   <?php if ($this->session->userdata('is_teacher')==1):?>
-    <a href="homework/upload_form" class="btn btn-info col-md-1 col-md-offset-9">Upload</a>
+    <a href="homework/upload_homework_form" class="btn btn-info col-md-1 col-md-offset-9">Upload</a>
   <?php endif; ?>
   <table class="table table-striped table-hover ">
     <thead>

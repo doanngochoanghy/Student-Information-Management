@@ -18,12 +18,12 @@ class Homework extends CI_Controller {
 		}
 		
 	}
-	public function upload_form()
+	public function upload_homework_form()
 	{
 		if ($this->session->userdata('is_teacher')==1)
 		{
 			$this->load->view('templates/header');
-			$this->load->view('homework/upload_form');
+			$this->load->view('homework/upload_homework_form');
 			$this->load->view('templates/footer');
 		}
 		else
@@ -76,6 +76,7 @@ class Homework extends CI_Controller {
 	{
 		if ($this->session->userdata('loggedin')==TRUE) {
 			$homework=$this->homeworks_model->get_homework($id);
+			var_dump($homework);
 			force_download($homework['file_path'], NULL);
 		}
 		else

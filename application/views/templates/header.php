@@ -18,7 +18,7 @@
         <ul class="nav navbar-nav">
           <li><a href="<?php echo base_url(); ?>information">Thông tin sinh viên</a></li>
           <li><a href="<?php echo base_url(); ?>homework">Bài tập</a></li>
-          <li><a href="#">Đố vui</a></li>
+          <li><a href="<?php echo base_url(); ?>puzzle">Đố vui</a></li>
         </ul>
         <?php if(!$this->session->userdata('loggedin')): ?>
           <ul class="nav navbar-nav navbar-right">
@@ -27,21 +27,30 @@
           </ul>
         <?php else: ?>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo base_url(); ?>users/logout">Log Out</a></li>
+
             <li>
-            <div class="btn-group">
+              <div class="btn-group">
                 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $this->session->userdata('username');; ?>
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu" style="width: 20%">
                     <li>
                       <?php echo form_open('information/view_info','user_id',array('user_id'=>$this->session->userdata('user_id'))); ?>
-                      <button type="" class="btn btn-success btn-sm col-md-8 col-md-offset-2">Infomation</button>
+                      <button type="" class="btn btn-success btn-sm col-md-8 col-md-offset-2">Infomation
+                      </button>
                       <?php echo form_close(); ?>
                     </li>
                     <br>
                     <li>
                       <?php echo form_open('information/receive_message'); ?>
-                      <button type="" class="btn btn-success btn-sm col-md-8 col-md-offset-2">Message</button>
+                      <button type="" class="btn btn-success btn-sm col-md-8 col-md-offset-2">Message
+                      </button>
+                      <?php echo form_close(); ?>
+                    </li>
+                    <li>
+                      <?php echo form_open('users/logout'); ?>
+                      <button type="" class="btn btn-success btn-sm col-md-8 col-md-offset-2">
+                        Log Out
+                      </button>
                       <?php echo form_close(); ?>
                     </li>
                   </ul>
