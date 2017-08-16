@@ -76,7 +76,7 @@ class Information extends CI_Controller {
 					);
 				$this->users_model->update($user_id,$change_data);
 				$this->session->set_flashdata('message', 'You changed information.');
-				redirect(base_url()."information",'');
+				redirect("information",'');
 			}
 		}
 	}

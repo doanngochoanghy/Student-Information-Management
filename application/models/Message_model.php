@@ -27,8 +27,8 @@ class Message_model extends CI_Model {
 	public function list_messages($user_id)
 	{
 		$this->db->where('receiver_id', $user_id);
+		$this->db->where('content !=', '');
 		$this->db->order_by('time', 'desc');
-		//$this->db->from('messages');
 		$this->db->join('users', 'users.user_id = messages.sender_id', 'left');
 		return $this->db->get('messages')->result_array();
 	}
