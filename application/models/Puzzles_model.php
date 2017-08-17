@@ -16,6 +16,20 @@ class Puzzles_model extends CI_Model {
 		$this->db->where('puzzle_id', $id);
 		return $this->db->get('puzzles')->row_array();
 	}
+	public function submit($answer,$puzzle_id)
+	{
+		$puzzle=$this->get_puzzle($puzzle_id);
+		if (empty($puzzle)) {
+			return false;
+		}
+		if (str_replace(" ", "_", trim($answer)) ==pathinfo($puzzle['file_path'])['filename']) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 
 /* End of file Puzzles_mdel.php */

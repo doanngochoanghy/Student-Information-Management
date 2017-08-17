@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>QLTTSV</title>
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="">
- <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
- <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <?php header("Content-Type: text/html; charset=utf-8"); ?> 
+  <title>QLTTSV</title>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="">
+  <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-inverse">

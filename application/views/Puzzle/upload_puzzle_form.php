@@ -4,7 +4,7 @@
 <input type="file" name="puzzle" size="20"  />
 <br>
 <label>Hint:</label>
-<input type="text" class="form-control" name="hint"><br><br>
-<input type="submit" value="upload" class="btn btn-success" />
+<input type="text" class="form-control" name="hint" required="" placeholder="write the hint"><br><br>
+<input type="submit" value="upload" class="btn btn-success " />
 
 </form>
