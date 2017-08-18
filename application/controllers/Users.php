@@ -25,7 +25,7 @@ class Users extends CI_Controller {
 				$this->load->view('users/login');
 				$this->load->view('templates/footer');
 			} else {
-				$username=htmlspecialchars($this->input->post('username'));
+				$username=htmlspecialchars($this->input->post('username'),ENT_QUOTES);
 				$password=md5($this->input->post('password'));
 				$user_data=$this->users_model->login($username,$password);
 				//var_dump($user_data);
@@ -64,11 +64,11 @@ class Users extends CI_Controller {
 			$this->load->view('users/register');
 			$this->load->view('templates/footer');
 		} else {
-			$data = array('name' => htmlspecialchars($this->input->post('name')),
-				'email' => htmlspecialchars($this->input->post('email')),
-				'username' => htmlspecialchars($this->input->post('username')),
+			$data = array('name' => htmlspecialchars($this->input->post('name'),ENT_QUOTES),
+				'email' => htmlspecialchars($this->input->post('email'),ENT_QUOTES),
+				'username' => htmlspecialchars($this->input->post('username'),ENT_QUOTES),
 				'password' => md5($this->input->post('password')),
-				'phone' => htmlspecialchars($this->input->post('phone'))
+				'phone' => htmlspecialchars($this->input->post('phone'),ENT_QUOTES)
 				);
 			$this->users_model->register($data);
 			$this->session->set_flashdata('message', 'You are registered. You can login');

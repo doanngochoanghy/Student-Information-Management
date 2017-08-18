@@ -1,2 +1,1 @@
-<h1><?= $title ?></h1>
-<p>Welcome to the Student Information Management System</p>
+<h1>Welcome to the Student Information Management System</h1>

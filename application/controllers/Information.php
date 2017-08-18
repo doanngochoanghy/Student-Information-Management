@@ -70,9 +70,9 @@ class Information extends CI_Controller {
 		} else {
 			if ($this->session->userdata('is_teacher')==1||$this->session->userdata('user_id')==$user_id) 
 			{
-				$change_data = array('name' => htmlspecialchars($this->input->post('name')),
-					'email' => htmlspecialchars($this->input->post('email')),
-					'phone' => htmlspecialchars($this->input->post('phone'))
+				$change_data = array('name' => htmlspecialchars($this->input->post('name'),ENT_QUOTES),
+					'email' => htmlspecialchars($this->input->post('email'),ENT_QUOTES),
+					'phone' => htmlspecialchars($this->input->post('phone'),ENT_QUOTES)
 					);
 				$this->users_model->update($user_id,$change_data);
 				$this->session->set_flashdata('message', 'You changed information.');
@@ -102,7 +102,7 @@ class Information extends CI_Controller {
 	{
 		$sender_id=$this->input->post('sender_id');
 		$receiver_id=$this->input->post('receiver_id');
-		$content=htmlspecialchars($this->input->post('content'));
+		$content=htmlspecialchars($this->input->post('content'),ENT_QUOTES);
 		$message_info = array('sender_id' => $sender_id,'receiver_id' => $receiver_id,'content' => $content );
 		#Kiểm tra thông tin người gửi.
 		if ($this->session->userdata('user_id')==$sender_id) {

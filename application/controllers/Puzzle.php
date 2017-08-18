@@ -40,26 +40,24 @@ class Puzzle extends CI_Controller {
 			}
 			else
 			{
-				if ($this->session->userdata('is_teacher')==1) 
-				{
-					$config['upload_path'] = './puzzle/';
-					$config['allowed_types'] = 'txt';
-					$config['max_size']  = '100';
+				$config['upload_path'] = './puzzle/';
+				$config['allowed_types'] = 'txt';
+				$config['max_size']  = '100';
 
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if ( ! $this->upload->do_upload('puzzle')){
-						$error = array('error' => $this->upload->display_errors());
-						$this->session->set_flashdata('message', $error['error']);
-						redirect('puzzle');
-					}
-					else{
-						$data = array('upload_data' => $this->upload->data());
-						$hint=$this->input->post('hint');
-						$this->puzzles_model->add_puzzle($data['upload_data']['full_path'],$hint);
-						$this->session->set_flashdata('message', 'Upload puzzle success.');
-						redirect('puzzle');
-					}
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				if ( ! $this->upload->do_upload('puzzle')){
+					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('mes
+						sage', $error['error']);
+					redirect('puzzle');
+				}
+				else{
+					$data = array('upload_data' => $this->upload->data());
+					$hint=$this->input->post('hint');
+					$this->puzzles_model->add_puzzle($data['upload_data']['full_path'],$hint);
+					$this->session->set_flashdata('message', 'Upload puzzle success.');
+					redirect('puzzle');
 				}
 			}
 		}
@@ -111,5 +109,5 @@ class Puzzle extends CI_Controller {
 		}
 	}
 }
-	/* End of file Puzzle.php */
+/* End of file Puzzle.php */
 /* Location: ./application/controllers/Puzzle.php */
